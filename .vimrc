@@ -1,21 +1,20 @@
-" vim-plug
+"  vim-plug
 call plug#begin('~/.vim/plugged')
 
 " plugin section
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
 Plug 'vim-scripts/indentpython.vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'nvie/vim-flake8'
 Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'tpope/vim-commentary'
 Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'tmhedberg/SimpylFold'
-
+Plug 'dense-analysis/ale'
+Plug 'vim-airline/vim-airline'
 " end vim-plug
 call plug#end()
 
@@ -40,6 +39,17 @@ colorscheme gruvbox
 set nu
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
+" Set up ALE linter Settings
+let g:ale_linters = {
+      \   'python': ['flake8', 'pylint'],
+      \   'ruby': ['standardrb', 'rubocop'],
+      \   'javascript': ['eslint'],
+      \}
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:airline#extensions#ale#enabled = 1
+
 " enable syntax highlighting
 syntax enable
 " show line numbers
@@ -57,4 +67,4 @@ set cursorline
 " show the matching part of the pair for [] {} and ()
 set showmatch
 " enable all Python syntax highlighting features
-let python_highlight_all = 1
+autocmd BufRead,BufNewFile *.py let python_highlight_all=1
