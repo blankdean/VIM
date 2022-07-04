@@ -1,2 +1,2 @@
 # VIM
-Vim Config
+Vim Config I personally use.
