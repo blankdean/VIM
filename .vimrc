@@ -15,6 +15,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tmhedberg/SimpylFold'
 Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
+Plug 'morhetz/gruvbox'
+
 " end vim-plug
 call plug#end()
 
